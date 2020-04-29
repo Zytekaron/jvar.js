@@ -275,7 +275,7 @@ module.exports = class Cherry extends Object {
      * @returns {set}
      */
     toSet() {
-        return new Set(this.entries());
+        return new Set(Object.entries(this));
     }
 
     /**
@@ -283,15 +283,15 @@ module.exports = class Cherry extends Object {
      * @returns {array}
      */
     entryArray() {
-        return Array.from(this.entries());
+        return Array.from(Object.entries(this));
     }
 
     /**
      * Get a Set of all the entries in this Cherry
-     * @returns {array}
+     * @returns {set}
      */
     entrySet() {
-        return this.array();
+        return new Set(Object.entries(this));
     }
 
     /**
@@ -299,7 +299,7 @@ module.exports = class Cherry extends Object {
      * @returns {array}
      */
     keyArray() {
-        return Array.from(this.keys());
+        return Array.from(Object.keys(this));
     }
 
     /**
@@ -307,7 +307,7 @@ module.exports = class Cherry extends Object {
      * @returns {set}
      */
     keySet() {
-        return new Set(this.keys());
+        return new Set(Object.keys(this));
     }
 
     /**
@@ -315,7 +315,7 @@ module.exports = class Cherry extends Object {
      * @returns {array}
      */
     valueArray() {
-        return Array.from(this.values());
+        return Array.from(Object.values(this));
     }
 
     /**
@@ -323,7 +323,7 @@ module.exports = class Cherry extends Object {
      * @returns {set}
      */
     valueSet() {
-        return new Set(this.values());
+        return new Set(Object.values(this));
     }
 
 
@@ -553,10 +553,10 @@ module.exports = class Cherry extends Object {
 
     /**
      * Iterator
-     * @returns {iterator}
+     * @returns {{ next(): ({ value: any, done: boolean }) }}
      */
     [Symbol.iterator]() {
-        const entries = Array.from(this.entries());
+        const entries = Object.entries(this);
         return {
             next() {
                 if (entries.length) {
