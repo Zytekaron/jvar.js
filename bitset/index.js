@@ -1,12 +1,5 @@
-/*
-    BitSet
-    Version: 1.1.0
-    Author: Michael Thornes <zytekaron@gmail.com>
-    Updated: 11/24/19
-*/
-
 /**
- * BitSet class
+ * BitSet - A class to simplify bitwise operations on a single binary string
  * @class
  * @type {BitSet}
  */
@@ -158,6 +151,13 @@ module.exports = class BitSet {
         return this;
     }
 
+    /**
+     * Clone this BitSet
+     * @returns {BitSet} - The new cloned BitSet
+     */
+    clone() {
+        return new BitSet(this._bits);
+    }
 
     /**
      * Get the bits in this BitSet

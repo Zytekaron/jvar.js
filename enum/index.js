@@ -1,10 +1,3 @@
-/*
-    Enum Creator
-    Version: 2.1.0
-    Author: Michael Thornes <zytekaron@gmail.com>
-    Updated: 12/1/19
-*/
-
 const type = require('../fn/type');
 
 /**
@@ -44,15 +37,15 @@ module.exports = class Enum {
      * @returns {boolean} - Whether or not this identifier exists in the enum
      */
     has(identifier) {
-        return type(this[identifier]) !== 'undefined';
+        return this[identifier] !== undefined;
     }
 
     /**
      * Get a list of elements in this Enum
-     * @param {string|null} delimiter - The string to join elements by
+     * @param {string|null} [delimiter:','] - The string to join elements by
      * @returns {string|array} - The elements in this enum. If a delimiter is given, the elements are joined by a string, otherwise an array is returned
      */
-    list(delimiter) {
+    list(delimiter = null) {
         const items = Object.keys(this);
         return delimiter ? items.join(delimiter) : items;
     }

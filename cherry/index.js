@@ -1,10 +1,3 @@
-/*
-    Cherry
-    Version: 1.2.0
-    Author: Michael Thornes <zytekaron@gmail.com>
-    Updated: 12/1/19
-*/
-
 const ensure = require("../utility/ensure");
 
 const type = require('../fn/type');
