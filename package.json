@@ -8,7 +8,7 @@
         "start": "node src/index.js"
     },
     "keywords": ["util", "utility"],
-    "license": "MIT",
+    "license": "GPLV3",
     "dependencies": {
         "lodash": "^4.17.15"
     }

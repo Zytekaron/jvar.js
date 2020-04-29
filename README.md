@@ -117,3 +117,6 @@ regexEscape('Twitter blocks your passwords...see: ***'); // escape regular expre
 sameType(1, 2, 9); // object type comparing -> true
 type(new Map()); // better typeof operator -> 'Map'
 ```
+
+## License
+<b>jvar.js</b> is licensed under the [GNU Lesser General Public License Version 3](https://github.com/Zytekaron/jvar.js/blob/master/LICENSE)
