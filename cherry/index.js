@@ -552,8 +552,16 @@ module.exports = class Cherry extends Object {
     }
 
     /**
+     * String Tag
+     * @returns {string} The string tag
+     */
+    get [Symbol.toStringTag]() {
+        return 'Cherry';
+    }
+
+    /**
      * Iterator
-     * @returns {{ next(): ({ value: any, done: boolean }) }}
+     * @returns {iterator} A [key, value] iterator
      */
     [Symbol.iterator]() {
         const entries = Object.entries(this);

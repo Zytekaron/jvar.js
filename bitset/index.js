@@ -190,4 +190,12 @@ module.exports = class BitSet {
     set bits(bits) {
         this._bits = bits;
     }
+
+    /**
+     * String Tag
+     * @returns {string} The string tag
+     */
+    get [Symbol.toStringTag]() {
+        return 'BitSet';
+    }
 };

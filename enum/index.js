@@ -57,4 +57,12 @@ module.exports = class Enum {
     get size() {
         return this.list().length;
     }
+
+    /**
+     * String Tag
+     * @returns {string} The string tag
+     */
+    get [Symbol.toStringTag]() {
+        return 'Enum';
+    }
 };
