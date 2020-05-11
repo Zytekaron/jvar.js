@@ -1,5 +1,6 @@
 const util = require('util');
 const type = require('./type');
+
 /**
  * Object inspector
  * @param {object} obj - The object to inspect

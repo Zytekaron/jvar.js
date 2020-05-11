@@ -61,17 +61,31 @@ module.exports = class Cherry extends Object {
 
     /**
      * Modify each key/value pair in this Cherry
-     * Similar to Array#map
      * @param {function} fn - The function to call with each pair
      * @param {object} [thisArg] - The value to assign to the callback function's `this`
      * @returns {Cherry} - The modified Cherry
      */
-    map(fn, thisArg) {
+    apply(fn, thisArg) {
         if (thisArg) fn = fn.bind(thisArg);
         for (const [key, value] of Object.entries(this)) {
             this[key] = fn(value, key, this);
         }
         return this;
+    }
+
+    /**
+     * Map the data within this Cherry to an array using a mapper callback
+     * @param {function} fn - The function to call with each pair
+     * @param {object} [thisArg] - The value to assign to the callback function's `this`
+     * @returns {array} - The mapped values
+     */
+    map(fn, thisArg) {
+        if (thisArg) fn = fn.bind(thisArg);
+        const data = [];
+        for (const [key, value] of Object.entries(this)) {
+            data.push(fn(value, key, this));
+        }
+        return data;
     }
 
     /**

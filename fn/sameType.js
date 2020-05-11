@@ -1,4 +1,5 @@
 const type = require('./type');
+
 /**
  * Check if all input objects are of the same type
  * @type {(function(*=): *)|*} - The objects to compare

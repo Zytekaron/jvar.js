@@ -1,4 +1,5 @@
 const type = require('./type');
+
 /**
  * Check if an object is iterable
  * @param {object} object - The object to check

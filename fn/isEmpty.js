@@ -1,5 +1,6 @@
 const type = require('./type');
 const isIterable = require('./isIterable');
+
 /**
  * Check if an iterable is empty
  * @param {iterable} iterable - The iterable to check
