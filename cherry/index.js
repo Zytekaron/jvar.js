@@ -204,7 +204,7 @@ module.exports = class Cherry extends Object {
      */
     sweep(fn, thisArg) {
         if (thisArg) fn = fn.bind(thisArg);
-        const data = Object.assign({}, this);
+        const data = Object.assign(new Cherry(), this);
         for (const [key, value] of Object.entries(this)) {
             if (fn(value, key, this)) _unset(data, key);
         }
