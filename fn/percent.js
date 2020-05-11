@@ -24,7 +24,7 @@ module.exports = (arr, {
 } = {}) => {
     const t = arr
         .map(i => i[key])
-        .reduce((a, c) => +a + +c, 0);
+        .reduce((a, c) => a + +c, 0);
     return arr.map(i => {
         i[value] = int ? i[key] / t * 100 : i[key] / t;
         return i;
