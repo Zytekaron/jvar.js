@@ -340,9 +340,9 @@ module.exports = class Cherry extends Object {
         }
         ensure.type(count, 'number');
         ensure.notNaN(count);
-        const data = this.entries();
+        const data = this.entryArray();
         if (!keepArray && count === 1) return data.next().value;
-        count = constrain(count, 1, this.size);
+        count = constrain(count, 1, data.length);
         return Array.from(data).slice(0, count);
     }
 
@@ -382,9 +382,9 @@ module.exports = class Cherry extends Object {
         }
         ensure.type(count, 'number');
         ensure.notNaN(count);
-        const data = Array.from(this.entries());
-        if (!keepArray && count === 1) return data[this.size - 1];
-        count = constrain(count, 1, this.size);
+        const data = this.entryArray();
+        if (!keepArray && count === 1) return data[data.length - 1];
+        count = constrain(count, 1, data.length);
         return data.slice(-count);
     }
 
@@ -418,7 +418,7 @@ module.exports = class Cherry extends Object {
      * @returns {array | array<array>} - The random entry/entries from this Cherry
      */
     random(count = 1, keepArray = false) {
-        const data = Array.from(this.entries()).slice();
+        const data = this.entryArray().slice();
         const random = [];
         if (type(count) === 'boolean') {
             keepArray = count;
@@ -427,8 +427,8 @@ module.exports = class Cherry extends Object {
         if (count == null) return data[Math.floor(Math.random() * data.length)];
         ensure.type(count, 'number');
         ensure.integer(count);
-        count = constrain(count, 1, this.size);
-        if (!this.size) return null;
+        count = constrain(count, 1, data.length);
+        if (!data.length) return null;
         if (!keepArray && count === 1) return data[Math.floor(Math.random() * data.length)];
         for (let i = 0; i < count; i++) {
             random.push(data.splice(Math.floor(Math.random() * data.length), 1)[0]);
