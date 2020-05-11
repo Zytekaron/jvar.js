@@ -19,12 +19,10 @@ module.exports = {
             types.push('undefined');
         }
         for (const t of types) {
-            if (type(obj) === t.toLowerCase() || obj instanceof t) return;
+            if (type(obj) === t.toLowerCase()) return;
         }
         if (types.length > 1) {
             throw new TypeError(`Expected one of "${types.join('", "')}" but instead found "${type(obj)}"`);
-        } else {
-            throw new TypeError(`Expected "${types[0]}" but instead found "${type(obj)}"`);
         }
     },
 
