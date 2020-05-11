@@ -428,7 +428,7 @@ module.exports = class Cherry extends Object {
         ensure.type(count, 'number');
         ensure.integer(count);
         count = constrain(count, 1, this.size);
-        if (!this.size) return 'null';
+        if (!this.size) return null;
         if (!keepArray && count === 1) return data[Math.floor(Math.random() * data.length)];
         for (let i = 0; i < count; i++) {
             random.push(data.splice(Math.floor(Math.random() * data.length), 1)[0]);
