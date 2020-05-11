@@ -23,8 +23,6 @@ module.exports = {
         }
         if (types.length > 1) {
             throw new TypeError(`Expected one of "${types.join('", "')}" but instead found "${type(obj)}"`);
-        } else {
-            throw new TypeError(`Expected "${types[0]}" but instead found "${type(obj)}"`);
         }
     },
 
