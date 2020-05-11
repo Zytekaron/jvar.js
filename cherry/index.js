@@ -543,9 +543,9 @@ module.exports = class Cherry extends Object {
     }
 
     /**
-     * Exponentiate a value
-     * @param {string} path - The path at which to exponentiate
-     * @param {number} operand - The amount to exponentiate the value at the given path by
+     * Apply an exponent to a value
+     * @param {string} path - The path at which to apply the exponent
+     * @param {number} operand - The exponent to apply to the value at the given path
      */
     pow(path, operand) {
         return this.math(path, 'pow', operand);
