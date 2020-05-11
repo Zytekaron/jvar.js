@@ -10,6 +10,4 @@
  * conform(10, 1, 10,  1, 1000); // 1000
  * conform(10, 1, 100, 1, 1000); // 100
  */
-module.exports = (num, imin, imax, omin, omax) => {
-    return omin + (omax - omin) * ((num - imin) / (imax - imin));
-};
+module.exports = (num, imin, imax, omin, omax) => omin + (omax - omin) * ((num - imin) / (imax - imin));

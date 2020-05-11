@@ -1,5 +1,6 @@
 const type = require('../fn/type');
 const isIterable = require('../fn/isIterable');
+
 module.exports = {
     /**
      * Ensure the input is an integer (no decimals)
