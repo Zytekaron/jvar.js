@@ -7,7 +7,7 @@ const type = require('../fn/type');
 module.exports = class Enum {
     /**
      * Constructor
-     * @param {iterable} iterable - The object to create an Enum from
+     * @param {[string, any][]} iterable - The object to create an Enum from
      * @param {function|null} fn - The function to call on the value (ie Symbol)
      */
     constructor(iterable, fn) {
