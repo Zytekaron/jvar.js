@@ -6,7 +6,7 @@ module.exports = {
      * Check if the type of the given object matches one of the allowed types. Throws an error if not.
      * 'nil' may used in place of 'null', 'undefined'
      * Fails when all types have been checked
-     * @param {number} obj The object to check the type of
+     * @param {*} obj The object to check the type of
      * @param {string|function} types The types that are allowed
      * @example
      * ensure.type(['input'], 'string', 'array'); // does nothing: ['input'] is an array
