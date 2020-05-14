@@ -348,10 +348,6 @@ module.exports = class Cherry extends Object {
      * @returns {array | array<array>} - The first entry/entries in this Cherry
      */
     first(count = 1, keepArray = false) {
-        if (type(count) === 'boolean') {
-            keepArray = count;
-            count = 1;
-        }
         ensure.type(count, 'number');
         ensure.notNaN(count);
         const data = this.entryArray();

@@ -6,7 +6,7 @@ module.exports = {
      * Check if the type of the given object matches one of the allowed types. Throws an error if not.
      * 'nil' may used in place of 'null', 'undefined'
      * Fails when all types have been checked
-     * @param {any} obj The object to check the type of
+     * @param {number} obj The object to check the type of
      * @param {string|function} types The types that are allowed
      * @example
      * ensure.type(['input'], 'string', 'array'); // does nothing: ['input'] is an array
@@ -32,7 +32,7 @@ module.exports = {
     /**
      * Ensure that every object is defined (not null or undefined)
      * Fails on first non-match
-     * @param {any} data The data to ensure is defined
+     * @param {*} data The data to ensure is defined
      * @example
      * ensure.defined(123, []); // does nothing
      * ensure.defined(new Set(), null); // throws an error: Expected value but instead found "null"
@@ -85,7 +85,7 @@ module.exports = {
     /**
      * Ensure that all the objects are iterable
      * Fails on first non-match
-     * @param {any} data The data to ensure is defined
+     * @param {*} data The data to ensure is defined
      * @example
      * ensure.iterable([], {}); // does nothing: all objects are iterable
      * ensure.iterable(12, /a/); // throws an error: Expected iterable, instead found "number"
