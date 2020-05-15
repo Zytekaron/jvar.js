@@ -32,11 +32,12 @@ function doMath(target, operation, operand) {
 }
 
 /**
- * Cherry - Object Utility
+ * An object utility class designed to provide ease of use
  * @class Cherry
  * @extends Object
  */
 module.exports = class Cherry extends Object {
+
     /**
      * Constructor
      * @param {iterable|object} iterable
