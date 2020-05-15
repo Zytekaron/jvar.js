@@ -2,6 +2,7 @@ const ensure = require("../utility/ensure");
 
 const type = require('../fn/type');
 const constrain = require('../fn/constrain');
+const randomInt = require('../math/randomInt');
 
 const {
     get: _get,
@@ -340,17 +341,16 @@ module.exports = class Cherry extends Object {
         return new Set(Object.values(this));
     }
 
-
     /**
      * Get the first entry/entries in this Cherry
-     * @param {number} [count] - The number of entries to get
-     * @param {boolean} [keepArray] - Whether or not to return an array when 1 value is collected
+     * @param {number} [count=1] - The number of entries to get
+     * @param {boolean} [keepArray=false] - Whether or not to return an array when 1 value is collected
      * @returns {array | array<array>} - The first entry/entries in this Cherry
      */
     first(count = 1, keepArray = false) {
-        ensure.type(count, 'number');
-        ensure.notNaN(count);
+        ensure.integer(count);
         const data = this.entryArray();
+        if (!data.length) return null;
         if (!keepArray && count === 1) return data.next().value;
         count = constrain(count, 1, data.length);
         return Array.from(data).slice(0, count);
@@ -358,40 +358,42 @@ module.exports = class Cherry extends Object {
 
     /**
      * Get the first key/keys in this Cherry
-     * @param {number} [count] - The number of keys to get
-     * @param {boolean} [keepArray] - Whether or not to return an array when 1 value is collected
+     * @param {number} [count=1] - The number of keys to get
+     * @param {boolean} [keepArray=false] - Whether or not to return an array when 1 value is collected
      * @returns {string | array<string>} - The first key/keys in this Cherry
      */
     firstKey(count = 1, keepArray = false) {
         const data = this.first(count);
-        if (!keepArray && count === 1) return data[0];
-        else return data.map(i => i[0]);
+        if (!keepArray && count === 1) {
+            return data;
+        } else {
+            return data.map(i => i[0]);
+        }
     }
 
     /**
      * Get the first value/values in this Cherry
-     * @param {number} [count] - The number of values to get
-     * @param {* | array<*>} [keepArray] - The first value/values in this Cherry
+     * @param {number} [count=1] - The number of values to get
+     * @param {* | array<*>} [keepArray=false] - The first value/values in this Cherry
+     * @returns {string | array<string>} - The first value/values in this Cherry
      */
     firstValue(count = 1, keepArray = false) {
         const data = this.first(count);
-        if (!keepArray && count === 1) return data[1];
-        else return data.map(i => i[1]);
+        if (!keepArray && count === 1) {
+            return data;
+        } else {
+            return data.map(i => i[1]);
+        }
     }
 
     /**
      * Get the last entry/entries in this Cherry
-     * @param {number} [count] - The number of entries to get
-     * @param {boolean} [keepArray] - Whether or not to return an array when 1 value is collected
+     * @param {number} [count=1] - The number of entries to get
+     * @param {boolean} [keepArray=false] - Whether or not to return an array when 1 value is collected
      * @returns {array | array<array>} - The last entry/entries in this Cherry
      */
     last(count = 1, keepArray = false) {
-        if (type(count) === 'boolean') {
-            keepArray = count;
-            count = 1;
-        }
-        ensure.type(count, 'number');
-        ensure.notNaN(count);
+        ensure.integer(count);
         const data = this.entryArray();
         if (!keepArray && count === 1) return data[data.length - 1];
         count = constrain(count, 1, data.length);
@@ -400,48 +402,49 @@ module.exports = class Cherry extends Object {
 
     /**
      * Get the last key/keys in this Cherry
-     * @param {number} [count] - The number of keys to get
-     * @param {boolean} [keepArray] - Whether or not to return an array when 1 value is collected
+     * @param {number} [count=1] - The number of keys to get
+     * @param {boolean} [keepArray=false] - Whether or not to return an array when 1 value is collected
      * @returns {string | array<string>} - The last key/keys in this Cherry
      */
     lastKey(count = 1, keepArray = false) {
         const data = this.last(count);
-        if (!keepArray && count === 1) return data[0];
-        else return data.map(i => i[0]);
+        if (!keepArray && count === 1) {
+            return data;
+        } else {
+            return data.map(i => i[0]);
+        }
     }
 
     /**
      * Get the last value/values in this Cherry
-     * @param {number} [count] - The number of values to get
-     * @param {* | array<*>} [keepArray] - The last value/values in this Cherry
+     * @param {number} [count=1] - The number of values to get
+     * @param {* | array<*>} [keepArray=false] - The last value/values in this Cherry
+     * @returns {string | array<string>} - The last value/values in this Cherry
      */
     lastValue(count = 1, keepArray = false) {
         const data = this.last(count);
-        if (!keepArray && count === 1) return data[1];
-        else return data.map(i => i[1]);
+        if (!keepArray && count === 1) {
+            return data;
+        } else {
+            return data.map(i => i[1]);
+        }
     }
 
     /**
      * Get a random entry/random entries in this Cherry
-     * @param {number} [count] - The number of entries to get
-     * @param {boolean} [keepArray] - Whether or not to return an array when 1 value is collected
+     * @param {number} [count=1] - The number of entries to get
+     * @param {boolean} [keepArray=false] - Whether or not to return an array when 1 value is collected
      * @returns {array | array<array>} - The random entry/entries from this Cherry
      */
     random(count = 1, keepArray = false) {
-        const data = this.entryArray().slice();
-        const random = [];
-        if (type(count) === 'boolean') {
-            keepArray = count;
-            count = 1;
-        }
-        if (count == null) return data[Math.floor(Math.random() * data.length)];
-        ensure.type(count, 'number');
         ensure.integer(count);
-        count = constrain(count, 1, data.length);
+        const data = this.entryArray().slice();
         if (!data.length) return null;
-        if (!keepArray && count === 1) return data[Math.floor(Math.random() * data.length)];
+        if (!keepArray && count === 1) return data[randomInt(data.length)];
+        count = constrain(count, 1, data.length);
+        const random = [];
         for (let i = 0; i < count; i++) {
-            random.push(data.splice(Math.floor(Math.random() * data.length), 1)[0]);
+            random.push(data.splice(randomInt(data.length), 1)[0]);
         }
         return random;
     }
@@ -454,21 +457,26 @@ module.exports = class Cherry extends Object {
      */
     randomKey(count = 1, keepArray = false) {
         const data = this.random(count);
-        if (!keepArray && count === 1) return data[1];
-        else return data.map(i => i[0]);
+        if (!keepArray && count === 1) {
+            return data;
+        } else {
+            return data.map(i => i[0]);
+        }
     }
 
     /**
      * Get a random value/random values entries in this Cherry
      * @param {number} [count] - The number of entries to get
      * @param {boolean} [keepArray] - Whether or not to return an array when 1 value is collected
-     * @returns {array | array<array>} - The random value/values from
-     *  this Cherry
+     * @returns {array | array<array>} - The random value/values from this Cherry
      */
     randomValue(count = 1, keepArray = false) {
         const data = this.random(count);
-        if (!keepArray && count === 1) return data[1];
-        else return data.map(i => i[1]);
+        if (!keepArray && count === 1) {
+            return data;
+        } else {
+            return data.map(i => i[1]);
+        }
     }
 
     /**
@@ -479,13 +487,16 @@ module.exports = class Cherry extends Object {
      */
     math(path, operation, operand) {
         ensure.type(path, 'string');
-        ensure.defined(operation, operand);
+        ensure.type(operation, 'string');
+        ensure.notNaN(operand);
         for (const [key, value] of Object.entries(math)) {
-            if (value.includes(operation)) operation = key;
+            if (value.includes(operation)) {
+                operation = key;
+                break;
+            }
         }
         const data = _get(this, path);
-        ensure.type(data, 'number');
-        ensure.notNaN(data, operand);
+        if (isNaN(data)) throw new TypeError("The value at the provided path is not a number");
         const result = doMath(data, operation, operand);
         _set(this, path, result);
         return result;
