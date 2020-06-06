@@ -48,7 +48,7 @@ module.exports = {
     /**
      * Ensure that every object is not NaN (is a valid number)
      * Fails on first non-match
-     * @param {object} data The data to ensure is not NaN
+     * @param {*} data The data to ensure is not NaN
      * @example
      * ensure.notNaN(123, 456); // does nothing
      * ensure.notNaN([]); // throws an error: Expected number but instead found "array"
@@ -56,7 +56,7 @@ module.exports = {
      */
     notNaN(...data) {
         for (const obj of data) {
-            if (!(obj instanceof Number) || isNaN(obj)) {
+            if (isNaN(obj)) {
                 throw new TypeError(`Expected number but instead found "${type(obj)}"`);
             }
         }
