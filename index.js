@@ -14,5 +14,6 @@ module.exports = {
     utility: require('./utility'),
 
     identity: (value) => value,
-    nil: () => null
+    nil: () => null,
+    version: '1.3.0'
 };
