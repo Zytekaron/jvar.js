@@ -2,6 +2,7 @@
   <dictionary name="Zytekaron">
     <words>
       <w>abcdef</w>
+      <w>abcdefghijklmnopqrstuvwxyz</w>
       <w>imax</w>
       <w>imin</w>
       <w>iterability</w>
@@ -9,6 +10,7 @@
       <w>mult</w>
       <w>omax</w>
       <w>omin</w>
+      <w>randomizer</w>
       <w>sbeve</w>
       <w>thornes</w>
       <w>zytekaron</w>

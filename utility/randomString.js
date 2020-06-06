@@ -1,4 +1,4 @@
-const crypto = require('crypto');
+const { randomBytes } = require('crypto');
 
 /**
  * Generate a random string of a given length and character set
@@ -17,11 +17,11 @@ module.exports = (length, characters) => {
     const entropyLength = Math.ceil(length * 1.1) * 2;
 
     // an array of characters to be joined later
-    let result = []; // ~35% faster than string concat using arrays
+    let result = []; // ~35% faster: array concatenation > string concatenation
     // until the string is full
     while (result.length < length) {
         // generate entropy
-        const entropy = crypto.randomBytes(entropyLength);
+        const entropy = randomBytes(entropyLength);
 
         // the entropy index
         let i = 0;
