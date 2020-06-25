@@ -62,7 +62,7 @@ console.log(Color.list()); // ['RED', 'BLUE', 'GREEN']
 <br>
 
 ## BitSet
-<b>Example Usage<b>
+<b>Example Usage</b>
 ```js
 const BitSet = require('./bitset');
 const bits1 = new BitSet(0b10101);
