@@ -41,7 +41,7 @@ const { Enum, Cherry, BitSet } = require('jvar');
 <br>
 
 ## Enum
-<b>Example: Color.js<b>
+<b>Example: Color.js</b>
 ```js
 const Enum = require('jvar/enum');
 module.exports = new Enum({
@@ -62,7 +62,7 @@ console.log(Color.list()); // ['RED', 'BLUE', 'GREEN']
 <br>
 
 ## BitSet
-<b>Example Usage<b>
+<b>Example Usage</b>
 ```js
 const BitSet = require('./bitset');
 const bits1 = new BitSet(0b10101);
