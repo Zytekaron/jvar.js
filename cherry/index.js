@@ -452,8 +452,8 @@ module.exports = class Cherry extends Object {
 
     /**
      * Get a random key/random keys in this Cherry
-     * @param {number} [count] - The number of entries to get
-     * @param {boolean} [keepArray] - Whether or not to return an array when 1 value is collected
+     * @param {number} [count=1] - The number of entries to get
+     * @param {boolean} [keepArray=false] - Whether or not to return an array when 1 value is collected
      * @returns {array | array<array>} - The random key/keys from this Cherry
      */
     randomKey(count = 1, keepArray = false) {
@@ -467,8 +467,8 @@ module.exports = class Cherry extends Object {
 
     /**
      * Get a random value/random values entries in this Cherry
-     * @param {number} [count] - The number of entries to get
-     * @param {boolean} [keepArray] - Whether or not to return an array when 1 value is collected
+     * @param {number} [count=1] - The number of entries to get
+     * @param {boolean} [keepArray=false] - Whether or not to return an array when 1 value is collected
      * @returns {array | array<array>} - The random value/values from this Cherry
      */
     randomValue(count = 1, keepArray = false) {
