@@ -102,7 +102,7 @@ module.exports = class Cherry extends Object {
     /**
      * Set a key to a value in this Cherry
      * @param {string} path - The path to assign this value in
-     * @param {string} value - The value of the given key
+     * @param {*} value - The value of the given key
      * @returns {Cherry} - The modified Cherry
      */
     set(path, value) {
