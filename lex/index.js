@@ -1,4 +1,4 @@
-const { type } = require('../utility/ensure');
+const type = require('../fn/type');
 
 /**
  * Lex - A string lex and parser for quoted strings and typed flags
