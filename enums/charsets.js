@@ -1,0 +1,11 @@
+const Enum = require('../enum');
+
+module.exports = new Enum({
+    BASE8: "012345678",
+    OCTAL: "012345678",
+    BASE16: "0123456789ABCDEF",
+    HEX: "0123456789ABCDEF",
+    BASE32_HEX: "ABCDEFGHIJKLMNOPQRSTUV0123456789",
+    BASE64: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/",
+    BASE64_URL: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-"
+});
