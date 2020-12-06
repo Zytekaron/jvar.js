@@ -8,6 +8,7 @@ module.exports = {
     Cherry: require('./cherry'),
     Enum: require('./enum'),
     fn: require('./fn'),
+    Lex: require('./lex'),
     math: require('./math'),
     OneTimePad: require('./otp'),
     Randomizer: require('./randomizer'),
@@ -16,5 +17,5 @@ module.exports = {
     identity: (value) => value,
     nil: () => null,
     noop: () => null,
-    version: '1.4.0'
+    version: '1.4.1'
 };

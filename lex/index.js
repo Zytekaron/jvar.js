@@ -4,7 +4,7 @@ const { type } = require('../utility/ensure');
  * Lex - A string lex and parser for quoted strings and typed flags
  * @class Enum
  */
-class Lex {
+module.exports = class Lex {
     /**
      * Create a new Lex with specified flags (optional)
      * @param flags - An object of flag names to parse functions (JavaScript types work for this -- Boolean, String, Number...)
