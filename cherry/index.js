@@ -102,7 +102,7 @@ module.exports = class Cherry extends Object {
     /**
      * Set a key to a value in this Cherry
      * @param {string} path - The path to assign this value in
-     * @param {string} value - The value of the given key
+     * @param {*} value - The value of the given key
      * @returns {Cherry} - The modified Cherry
      */
     set(path, value) {
@@ -463,8 +463,8 @@ module.exports = class Cherry extends Object {
 
     /**
      * Get a random key/random keys in this Cherry
-     * @param {number} [count] - The number of entries to get
-     * @param {boolean} [keepArray] - Whether or not to return an array when 1 value is collected
+     * @param {number} [count=1] - The number of entries to get
+     * @param {boolean} [keepArray=false] - Whether or not to return an array when 1 value is collected
      * @returns {array | array<array>} - The random key/keys from this Cherry
      */
     randomKey(count = 1, keepArray = false) {
@@ -478,8 +478,8 @@ module.exports = class Cherry extends Object {
 
     /**
      * Get a random value/random values entries in this Cherry
-     * @param {number} [count] - The number of entries to get
-     * @param {boolean} [keepArray] - Whether or not to return an array when 1 value is collected
+     * @param {number} [count=1] - The number of entries to get
+     * @param {boolean} [keepArray=false] - Whether or not to return an array when 1 value is collected
      * @returns {array | array<array>} - The random value/values from this Cherry
      */
     randomValue(count = 1, keepArray = false) {
@@ -496,6 +496,7 @@ module.exports = class Cherry extends Object {
      * @param {string} path - The path of the value to perform math on
      * @param {string} operation - The operation to perform on the number
      * @param {number} operand - The other operand for the given operation
+     * @returns {number}
      */
     math(path, operation, operand) {
         ensure.type(path, 'string');
@@ -517,6 +518,7 @@ module.exports = class Cherry extends Object {
     /**
      * Increment a value
      * @param {string} path - The path at which to increment the value
+     * @returns {number}
      */
     inc(path) {
         return this.add(path, 1);
@@ -525,6 +527,7 @@ module.exports = class Cherry extends Object {
     /**
      * Decrement a value
      * @param {string} path - The path at which to decrement the value
+     * @returns {number}
      */
     dec(path) {
         return this.sub(path, 1);
@@ -534,6 +537,7 @@ module.exports = class Cherry extends Object {
      * Add to a value
      * @param {string} path - The path at which to add
      * @param {number} operand - The amount to add to the value at the given path
+     * @returns {number}
      */
     add(path, operand) {
         return this.math(path, 'add', operand);
@@ -543,6 +547,7 @@ module.exports = class Cherry extends Object {
      * Subtract from a value
      * @param {string} path - The path at which to subtract
      * @param {number} operand - The amount to subtract from the value at the given path
+     * @returns {number}
      */
     sub(path, operand) {
         return this.math(path, 'sub', operand);
@@ -552,6 +557,7 @@ module.exports = class Cherry extends Object {
      * Multiply a value
      * @param {string} path - The path at which to multiply
      * @param {number} operand - The amount to multiply the value at the given path by
+     * @returns {number}
      */
     mul(path, operand) {
         return this.math(path, 'mul', operand);
@@ -561,6 +567,7 @@ module.exports = class Cherry extends Object {
      * Divide from a value
      * @param {string} path - The path at which to divide
      * @param {number} operand - The amount to divide the value at the given path by
+     * @returns {number}
      */
     div(path, operand) {
         return this.math(path, 'div', operand);
@@ -570,6 +577,7 @@ module.exports = class Cherry extends Object {
      * Mod a value
      * @param {string} path - The path at which to mod
      * @param {number} operand - The amount to mod the value at the given path by
+     * @returns {number}
      */
     mod(path, operand) {
         return this.math(path, 'mod', operand);
@@ -579,6 +587,7 @@ module.exports = class Cherry extends Object {
      * Apply an exponent to a value
      * @param {string} path - The path at which to apply the exponent
      * @param {number} operand - The exponent to apply to the value at the given path
+     * @returns {number}
      */
     pow(path, operand) {
         return this.math(path, 'pow', operand);
