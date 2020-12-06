@@ -2,6 +2,7 @@
   <dictionary name="Zytekaron">
     <words>
       <w>abcdef</w>
+      <w>abcdefghijklmnopqrstuv</w>
       <w>abcdefghijklmnopqrstuvwxyz</w>
       <w>imax</w>
       <w>imin</w>
@@ -14,6 +15,7 @@
       <w>ratelimit</w>
       <w>sbeve</w>
       <w>thornes</w>
+      <w>zabcdefghijklmnopqrstuvwxyz</w>
       <w>zytekaron</w>
     </words>
   </dictionary>

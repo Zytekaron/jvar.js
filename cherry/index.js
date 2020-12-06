@@ -255,6 +255,17 @@ module.exports = class Cherry extends Object {
         return false;
     }
 
+    /**
+     * Reduce this Cherry into a single value
+     * @param fn
+     * @param initialValue
+     * @returns {*}
+     */
+    reduce(fn, initialValue = 0) {
+        ensure.type(fn, 'function');
+        return this.entrySet()
+            .reduce((acc, [key, value], i) => fn(acc, value, key, i, this), initialValue);
+    }
 
     /**
      * Ensure that a property exists in the Cherry (if not, set it to a given default value)
@@ -268,7 +279,7 @@ module.exports = class Cherry extends Object {
         const data = _get(this, path);
         if (data === undefined) _set(this, path, value);
         return data;
-    };
+    }
 
     /**
      * Convert this Cherry to a Map

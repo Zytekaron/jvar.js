@@ -4,9 +4,6 @@
     "author": "Michael Thornes <zytekaron@gmail.com>",
     "description": "A utility package for node developers",
     "main": "src/index.js",
-    "scripts": {
-        "start": "node src/index.js"
-    },
     "keywords": ["util", "utility"],
     "license": "GPLV3",
     "repository": "Zytekaron/jvar.js",

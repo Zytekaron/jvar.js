@@ -125,9 +125,11 @@ function aliasMethod(probabilities, rand) {
         if (overFull.length > 0 && underFull.length > 0) {
             const firstOver = overFull[0];
             const firstUnder = underFull[0];
+
             probabilities[firstOver] += probabilities[firstUnder] - 1;
             aliases[firstUnder] = firstOver;
             underFull.shift();
+
             if (probabilities[firstOver] > 1) {
                 overFull.push(overFull.shift());
             } else if (probabilities[firstOver] < 1) {

@@ -7,8 +7,8 @@ const type = require('../fn/type');
 module.exports = class Enum {
     /**
      * Constructor
-     * @param {[string, any][]} iterable - The object to create an Enum from
-     * @param {function|null} fn - The function to call on the value (ie Symbol)
+     * @param {[string, any][]|{}} iterable - The object to create an Enum from
+     * @param {function} [fn=null] - The function to call on each value (ie Symbol)
      */
     constructor(iterable, fn) {
         if (type(iterable) === 'object') iterable = Object.entries(iterable);

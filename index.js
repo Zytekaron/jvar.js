@@ -7,6 +7,7 @@ module.exports = {
     BitSet: require('./bitset'),
     Cherry: require('./cherry'),
     Enum: require('./enum'),
+    enums: require('./enums'),
     fn: require('./fn'),
     math: require('./math'),
     OneTimePad: require('./otp'),

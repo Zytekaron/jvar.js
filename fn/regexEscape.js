@@ -6,4 +6,4 @@
  * regexEscape("[Zytekaron] Hello there ^^ check out google.com :)");
  * // "\[Zytekaron\] Hello there \^\^ check out google\.com :\)"
  */
-module.exports = string => string.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+module.exports = string => string.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
