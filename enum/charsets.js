@@ -1,4 +1,4 @@
-const Enum = require('../enum');
+const Enum = require('./index');
 
 module.exports = new Enum({
     BASE8: "012345678",

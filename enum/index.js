@@ -65,4 +65,12 @@ module.exports = class Enum {
     get [Symbol.toStringTag]() {
         return 'Enum';
     }
+
+    /**
+     * Character set Enums
+     * @returns {Enum} Charsets
+     */
+    static get charsets() {
+        return require('./charsets');
+    }
 };
