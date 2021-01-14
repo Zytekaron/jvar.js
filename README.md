@@ -2,10 +2,11 @@
 ```
 npm install jvar --save
 ```
+Support: [Discord Server](https://discord.gg/FfzwgUm/)
 
 <br>
 
-This library is primarily documented using JSDoc; examples may not be extensive or include all available features. Proper documentation may be created in the future.
+This library is primarily documented using JSDoc; examples may not be extensive or include all available features. Proper documentation may be created in the future, but it's not currently a priority.
 
 <br>
 
@@ -28,14 +29,15 @@ const inspect = require('jvar/fn/inspect');
 const { factorial, fibonacci } = require('jvar/math');
 const { fuzzy, inspect } = require('jvar/fn');
 
-// importing Enum, Cherry, or BitSet
+// importing class types
+const Lex = require('jvar/lex');
 const Enum = require('jvar/enum');
 const Cherry = require('jvar/cherry');
 const BitSet = require('jvar/bitset');
+// or
+const { Lex, Enum, Cherry, BitSet } = require('jvar');
 
-const { Enum, Cherry, BitSet } = require('jvar');
-
-// Sorry, no documentation for the fancy import ? from ? as ? stuff yet :/
+// ESM is not currently supported. Contact me if you need it and know how it works.
 ```
 
 <br>
@@ -73,50 +75,6 @@ bits1.and(bits2).or(0b1111).xor(7);
 ```
 
 <br>
-
-## Mathematics
-<b>Math Functions</b>
-```js
-const {
-    factorial,
-    fibonacci,
-    random,
-    root
-} = require('jvar/math');
-
-factorial(4); // 4! or 4 * 3 * 2 * 1 -> 24
-fibonacci(8); // 1, 1, 3, 5, 8, ... -> 34
-random.random(1, 10); // random float from 1 to 10
-random.randomInt(1, 10); // random int from 1 to 10
-random.secureRandom(1, 10); // cryptographically secure random float from 1 to 10
-random.secureRandomInt(1, 10); // cryptographically secure random int from 1 to 10
-root(64, 3); // aka Math.pow(n, 1 / nthRoot); -> 4   (4 ^ 3 = 64)
-
-// SECURITY DISCLAIMER
-// Please read the source code and decide for yourself if the
-// secureRandom math functions are truly safe!!!
-// https://github.com/Zytekaron/jvar.js/blob/master/math/random.js#L37
-// https://github.com/Zytekaron/jvar.js/blob/master/math/random.js#L55
-```
-
-<br>
-
-## Functions
-<b>Various utilities</b>
-```js
-const { conform, constrain, fuzzy, group, inspect, isEmpty, isIterable, percent, regexEscape, sameType, type } = require('jvar/fn');
-conform(0.53, 0, 1, 0, 100); // conform a number from one range to another -> 53
-constrain(0, 10, 100); // constrain a number to a certain range -> 10
-fuzzy("NASA", "National Aeronautics and Space Administration"); // Fuzzy search -> true
-group(/* follow the jsdoc */); // complicated function
-inspect({ a: '1', b: "2" }); // require('util').inspect but with fixed strings -> `{ a: '1', b: '2' }`
-isEmpty([]); // iterable empty checks -> true
-isIterable({}); // object iterability checks -> true
-percent(/* follow the jsdoc */); // complicated function
-regexEscape('Twitter blocks your passwords...see: ***'); // escape regular expression stuff in strings -> 'Twitter blocks your passwords\.\.\.see: \*\*\*'
-sameType(1, 2, 9); // object type comparing -> true
-type(new Map()); // better typeof operator -> 'Map'
-```
 
 ## License
 <b>jvar.js</b> is licensed under the [GNU Lesser General Public License Version 3](https://github.com/Zytekaron/jvar.js/blob/master/LICENSE)
