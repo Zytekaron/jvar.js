@@ -1,18 +1,19 @@
 /**
- * Array grouper -- creates smaller arrays with
+ * Array grouper -- creates smaller array groups of the specified size from the source array
+ *
+ * The last group is not guaranteed to be the size of the others depending on the input.
+ * Be sure to check this yourself by accessing it or ensuring `arr.length % size === 0`
  * @param {array} arr - The array to perform grouping on
- * @param {number} size - The size of the group
- * @param {boolean} obj - Return an object with grouped and ignored arrays?
- * @returns { array | { ignored: array, grouped: array } } - Grouped array / grouped and ignored array
+ * @param {number} size - The size of each group
+ * @returns {array} - An array of array groups
  * @example
- * group([1, 2, 3, 4], 2); // [ [1, 2], [3, 4] ]
- * group([1, 2, 3, 4, 5], 2, true); // { grouped: [ [1, 2], [3, 4], ] ignored: [5] }
+ * group([1, 2, 3, 4], 2); // [[1, 2], [3, 4]]
+ * group([1, 2, 3, 4, 5], 2); // [[1, 2], [3, 4], [5]]
  */
-module.exports = (arr = [], size, obj) => {
-    let p = [], reverse = false;
-    if (size < 1) [size, reverse] = [-size, 1];
-    while (arr.length >= size) p.push(arr.splice(0, size));
-    if (reverse) p = p.map(i => i.reverse()).reverse();
-    if (obj) return { grouped: p, ignored: arr };
-    return p;
+module.exports = (arr, size) => {
+    const grouped = [];
+    for (let i = 0; i < arr.length; i += size) {
+        grouped.push(arr.slice(i, i + size));
+    }
+    return grouped;
 };
