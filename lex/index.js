@@ -39,7 +39,7 @@ module.exports = class Lex {
         const flags = {};
 
         let buffer = [];
-        let char;
+        let char = '';
 
         let i = 0;
 
@@ -92,7 +92,12 @@ module.exports = class Lex {
         }
 
         function readFlags() {
-            if (/\\/.test(char)) {
+            if (char === '\\') {
+                buffer.push('-');
+                result.push(read());
+                return;
+            }
+            if (char === ' ') {
                 buffer.push('-');
                 result.push(read());
                 return;
@@ -115,18 +120,16 @@ module.exports = class Lex {
         }
 
         function handleFlag(flag, id) {
-            switch (flag) {
-                case Boolean:
-                    flags[id] = true;
-                    break;
-                default:
-                    if (type(flag) === 'function') {
-                        advance();
-                        flags[id] = flag(readString());
-                    } else {
-                        throw new Error('No parser for type ' + flag);
-                    }
+            if (flag === Boolean) {
+                flags[id] = true;
+                return;
             }
+            if (type(flag) === 'function') {
+                advance();
+                flags[id] = flag(readString());
+                return;
+            }
+            throw new Error('No parser for type ' + flag);
         }
 
         function read(...c) {
@@ -156,7 +159,9 @@ module.exports = class Lex {
                 }
                 buf.push(char);
             }
-            advance();
+            if (char === ' ') {
+                advance();
+            }
             return buf.join('');
         }
 
@@ -165,4 +170,4 @@ module.exports = class Lex {
             flags
         };
     }
-}
+};
