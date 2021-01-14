@@ -1,6 +1,6 @@
 {
     "name": "jvar",
-    "version": "1.4.2",
+    "version": "1.5.0",
     "author": "Michael Thornes <zytekaron@gmail.com>",
     "description": "A utility package for node developers",
     "main": "src/index.js",

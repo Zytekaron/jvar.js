@@ -17,5 +17,5 @@ module.exports = {
     identity: (value) => value,
     nil: () => null,
     noop: () => null,
-    version: '1.4.2'
+    version: '1.5.0'
 };
