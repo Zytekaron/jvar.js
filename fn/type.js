@@ -3,8 +3,8 @@
  * @param obj - The object to check the type of
  * @returns {string} - The type of the object
  * @example
- * type("HELLO!!!"); // 'string'
- * type([ 69 ]);     // 'array'
+ * type("Hi");       // 'string'
+ * type([]);         // 'array'
  * type(new Date()); // 'date'
  */
 module.exports = obj => {

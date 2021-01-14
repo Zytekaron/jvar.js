@@ -1,5 +1,5 @@
 /**
- * Array grouper
+ * Array grouper -- creates smaller arrays with
  * @param {array} arr - The array to perform grouping on
  * @param {number} size - The size of the group
  * @param {boolean} obj - Return an object with grouped and ignored arrays?
@@ -11,7 +11,7 @@
 module.exports = (arr = [], size, obj) => {
     let p = [], reverse = false;
     if (size < 1) [size, reverse] = [-size, 1];
-    while (arr.length >= size) p.push([...arr.splice(0, size)]);
+    while (arr.length >= size) p.push(arr.splice(0, size));
     if (reverse) p = p.map(i => i.reverse()).reverse();
     if (obj) return { grouped: p, ignored: arr };
     return p;
