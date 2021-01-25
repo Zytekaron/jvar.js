@@ -1,6 +1,7 @@
 module.exports = {
     conform: require('./conform'),
     constrain: require('./constrain'),
+    format: require('./format'),
     fuzzy: require('./fuzzy'),
     group: require('./group'),
     inspect: require('./inspect'),
