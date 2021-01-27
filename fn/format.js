@@ -2,7 +2,7 @@ const { get: _get } = require('lodash');
 
 /**
  * Format a string, similar in nature to the Rust formatter
- * @param {array} string - The format string
+ * @param {string} string - The format string
  * @param {...*} args - An array of arguments for the formatter
  * @returns {string} - The formatted string
  * @example

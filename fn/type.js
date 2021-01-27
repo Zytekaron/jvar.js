@@ -1,6 +1,6 @@
 /**
  * A function to replace the typeof operator
- * @param obj - The object to check the type of
+ * @param {*} obj - The object to check the type of
  * @returns {string} - The type of the object
  * @example
  * type("Hi");       // 'string'
