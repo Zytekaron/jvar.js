@@ -1,9 +1,10 @@
 {
     "name": "jvar",
-    "version": "1.5.1",
+    "version": "1.5.2",
     "author": "Michael Thornes <zytekaron@gmail.com>",
     "description": "A utility package for node developers",
     "main": "src/index.js",
+    "types": "./typings/index.d.ts",
     "keywords": ["util", "utility"],
     "license": "GPLV3",
     "repository": "Zytekaron/jvar.js",
