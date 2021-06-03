@@ -1,7 +1,9 @@
 # jvar.js
+
 ```
 npm install jvar --save
 ```
+
 Support: [Discord Server](https://discord.gg/FfzwgUm/)
 
 <br>
@@ -11,12 +13,14 @@ This library is primarily documented using JSDoc; examples may not be extensive 
 <br>
 
 ## Importing with jvar
+
 <b>Examples</b>
+
 ```js
 // Full-destructure importing
 const {
-    math: { factorial, fibonacci },
-    fn: { fuzzy, inspect }
+	math: { factorial, fibonacci },
+	fn: { fuzzy, inspect }
 } = require('jvar');
 
 // Full-path importing
@@ -37,44 +41,54 @@ const BitSet = require('jvar/bitset');
 // or
 const { Lex, Enum, Cherry, BitSet } = require('jvar');
 
-// ESM is not currently supported. Contact me if you need it and know how it works.
+// ESM imports are 1:1 with require, except that you can't do full-path imports - import them directly from the module
 ```
 
 <br>
 
 ## Enum
+
 <b>Example: Color.js</b>
+
 ```js
 const Enum = require('jvar/enum');
 module.exports = new Enum({
-    RED: 0xFF0000,
-    GREEN: 0x00FF00,
-    BLUE: 0x0000FF
+	RED: 0xff0000,
+	GREEN: 0x00ff00,
+	BLUE: 0x0000ff
 });
 ```
+
 <b>Usage</b>
+
 ```js
 const Color = require('./Color');
 console.log(Color.RED); // 0xFF0000 :: decimal
-console.log(Color.get("BLUE")); // 0x00FF00 :: decimal
-console.log(Color.has("PURPLE")); // false
+console.log(Color.get('BLUE')); // 0x00FF00 :: decimal
+console.log(Color.has('PURPLE')); // false
 console.log(Color.list()); // ['RED', 'BLUE', 'GREEN']
 ```
 
 <br>
 
 ## BitSet
+
 <b>Example Usage</b>
+
 ```js
 const BitSet = require('./bitset');
 const bits1 = new BitSet(0b10101);
 const bits2 = new BitSet(0b01011);
 // Full example coming soon
 // Planned feature: non-mutating methods
-bits1.and(bits2).or(0b1111).xor(7);
+bits1
+	.and(bits2)
+	.or(0b1111)
+	.xor(7);
 ```
 
 <br>
 
 ## License
+
 <b>jvar.js</b> is licensed under the [GNU Lesser General Public License Version 3](https://github.com/Zytekaron/jvar.js/blob/master/LICENSE)
