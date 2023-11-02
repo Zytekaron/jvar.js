@@ -1,8 +1,12 @@
 declare module 'jvar' {
-	export const version: '1.5.1';
+	//#region Constants
+
 	export const identity: (value: any) => any;
+
 	export const nil: () => null;
+
 	export const noop: () => null;
+
 	export const fn: {
 		conform: (num: number, imin: number, imax: number, omin: number, omax: number) => number;
 		constrain: (num: number, min: number, max: number) => number;
@@ -17,6 +21,7 @@ declare module 'jvar' {
 		sameType: (...objects: any[]) => boolean;
 		type: (obj: any) => string;
 	};
+
 	export const math: {
 		collsions: (size: number, probability: number) => number;
 		factorial: (num: number) => number;
@@ -28,8 +33,14 @@ declare module 'jvar' {
 		secureRandomInt: (min?: number, max?: number) => number;
 	};
 
+	export const version: '1.5.3';
+
+	//#endregion
+
+	//#region Classes
+
 	export class BitSet {
-		constructor(bits?: number)
+		public constructor(bits?: number);
 		private readonly _bits: number;
 		public test(other: BitSet | number): boolean;
 		public and(other: BitSet | number): BitSet;
@@ -50,8 +61,40 @@ declare module 'jvar' {
 		public set bits(number: number);
 	}
 
+	export class Bucket {
+		public constructor(bucketManager: BucketManager, snowflake: any);
+		public snowflake: any;
+		public uses: number;
+		public nextReset: number;
+		public canDraw(amount?: number): boolean;
+		public draw(amount?: number): number;
+		public drawMax(amount?: number): number;
+		public drawForce(amount?: number): number;
+		public reset(): void;
+		public get remainingUses(): number;
+		public get remainingTime(): number;
+	}
+
+	export class BucketManager {
+		public constructor(limit: number, reset: number);
+		public buckets: Map<any, Map<any, Bucket>>;
+		public limit: number;
+		public _reset: number;
+		public get(snowflake: any): Bucket;
+		public canDraw(snowflake: any, amount?: number): boolean;
+		public draw(snowflake: any, amount?: number): number;
+		public drawMax(snowflake: any, amount?: number): number;
+		public drawForce(snowflake: any, amount?: number): number;
+		public reset(snowflake: any): void;
+		public remainingUses(snowflake: any): number;
+		public timeUntilNextReset(snowflake: any): number;
+		public save(): string;
+		public static load(json: string): BucketManager;
+		public static get Bucket(): Bucket;
+	}
+
 	export class Cherry<V> extends Object {
-		constructor(iterable?: Iterable<V> | object);
+		public constructor(iterable?: Iterable<V> | object);
 		public each(fn: (value: V, key: string, Cherry: Cherry<V>) => any, thisArg?: object): Cherry<V>;
 		public apply(fn: (value: V, key: string, Cherry: Cherry<V>) => any, thisArg?: object): Cherry<V>;
 		public map(fn: (value: V, key: string, Cherry: Cherry<V>) => any, thisArg?: object): Array<V>;
@@ -106,10 +149,10 @@ declare module 'jvar' {
 		public list(delimiter?: null): (keyof T)[];
 		public list(delimiter: string): string;
 		public get size(): number;
-	}	  
+	}
 
 	export class OneTimePad {
-		constructor(characters: string, includeSpace: boolean);
+		public constructor(characters: string, includeSpace: boolean);
 		public characters: string;
 		public encode(message: string, key: string | null): string | object;
 		public decode(message: string, key: string | null): string | object;
@@ -119,8 +162,13 @@ declare module 'jvar' {
 		public static get DEFAULT_CHARACTERS(): string;
 	}
 
+	export class Lex {
+		public constructor(flags?: object, aliasFlags?: object);
+		public lex: (str: string) => { args: string[], flags: object };
+	}
+
 	export class Randomizer {
-		constructor(secure?: boolean);
+		public constructor(secure?: boolean);
 		public secure: boolean;
 		public weights: Array<any>;
 		public results: Array<any>;
@@ -131,8 +179,5 @@ declare module 'jvar' {
 		public sample(count?: number): any;
 	}
 
-	export class Lex {
-		constructor(flags?: object, aliasFlags?: object);
-		public lex: (str: string) => { args: string[], flags: object };
-	}
+	//#endregion
 }
